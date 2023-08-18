@@ -80,10 +80,10 @@ function draw(target) {
             x += 320 / 3;
         }
 
-        //右上に今選択しているものを表示する
+        //左上に今選択しているものを表示する
         ctx.font = '17px sans-serif';
-        ctx.fillText(target,30,20);
-        ctx.fillText('(2020年=100)',230,20);
+        ctx.fillText(target,23,25);
+        ctx.fillText('(2020年=100)',220,25);
         if (target == '総合') {
             ctx.lineWidth = 3;
             ctx.strokeStyle  = "hsl(" + y + ",90%,61%,100%)";
@@ -280,11 +280,11 @@ function draw(target) {
 }
 td {
     width: 175px;
+    height: 30px;
 }
 
 /*canvasの境界線を1pxの黒の実線で描く*/
 canvas {
-    border: 1px solid black;
     display: block;
     margin: auto; 
 }
@@ -310,6 +310,7 @@ body {
 <p>2020年4月～2023年4月まで</p>
 <canvas id="tutorial" width="350" height="350"></canvas>
 <br>
+<p>各分類をクリックすると太線になります</p>
 <table>
     <tr>
         <td onclick="draw('総合')"><div class="text" id="sougou">総合</div></td>
