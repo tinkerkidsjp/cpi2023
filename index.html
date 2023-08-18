@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>消費者物価指数</title>
+<script>
+var sougou = [100.2,100.1,99.9,100,100.1,99.9,99.8,99.5,99.3,99.8,99.8,99.9,99.1,99.4,99.5,99.7,99.7,100.1,99.9,100.1,100.1,100.3,100.7,101.1,101.5,101.8,101.8,102.3,102.7,103.1,103.7,103.9,104.1,104.7,104,104.4,105.1]
+//var tanokounetuhi = [98.9,93.2,92.4,93.3,97.8,97.4,96.5,95.3,95.6,97.6,100.9,106.8,111,111.2,112.7,116.8,117.4,117.2,121.5,129.9,130,130.2,134.7,139.5,139.9,139.1,139.1,139.6,138.5,138.7,137.7,137,136.1,135.8,135.3,135.2,135.6,135.6]
+var food = [100.3,100.3,99.9,100.2,101,100.5,100.4,99.4,98.8,100,99.5,99.1,99,99.3,99.9,99.6,99.9,101.4,100.8,100.8,100.9,102,102.3,102.5,102.9,103.4,103.6,104,104.5,105.6,107.1,107.8,107.9,109.5,110,110.4,111.6]
+var home = [100,100.1,100,100,100,100,100,100,100,100.4,100.5,100.5,100.6,100.6,100.6,100.6,100.7,100.7,100.7,100.7,100.7,100.7,100.8,100.8,101,101.1,101.2,101.2,101.3,101.3,101.8,101.9,102,102,102.1,102.1,102.2]
+var suidoukounetu= [101.5,100.8,100.5,99.8,99.5,98.7,98.1,97.1,96.3,96.1,96.4,97.3,98.8,100.7,101.4,102,102,103.1,104.4,106,107.1,108.3,111.1,113.3,114.3,115.2,115.6,117,117.9,118.5,119.7,121,123.3,124.5,110.8,110.2,109.9]
+var kagukazi = [99.2,99.6,100.1,99.9,99.4,99.9,100.8,101.6,101.8,101.4,101.3,101.4,101.4,101.5,101.7,102.3,102.3,101.6,101.7,102.1,101,100.8,100.5,101.8,103.7,105.1,105.7,106.3,106.8,108.4,108.7,109.6,108.6,108.5,109.2,111.4,114.1]
+var hihukuhakimono = [101.3,101.1,100.5,98.6,97.4,101.7,102,102.2,101,98.2,98.3,100.2,101.6,101.5,101,99.3,98.1,101.7,101.8,102.3,101.3,99.4,99.7,100.9,102.4,102.4,102.1,100.7,99.6,103.6,104.4,105.1,104.2,102.6,103.2,104.6,106.3]
+var iryou = [100.2,100.2,100.3,100.2,99.9,99.9,99.7,99.6,99.4,99.4,99.4,99.8,99.6,99.7,99.6,99.7,99.8,99.7,99.4,99.4,99.3,99.2,99.4,99.4,98.9,99,99,99.1,99.1,99.2,99.6,99.7,99.6,99.7,100.3,100.7,100.6]
+var koutuutuusin = [99,98.6,98.9,100,100.4,99.9,99.8,99.7,99.9,99.9,100.1,100.2,93.2,93.5,93.5,94.6,93.8,93.5,92.3,92.8,92.5,92.4,92.7,93.2,93,92.8,92.9,94.3,94.3,94.1,94.2,94.3,94.4,94.4,94.3,94.6,94.6]
+var education = [99.5,99.1,98.9,99.2,99.2,99.2,99.2,99.1,99.1,99.1,99.1,99.1,100.2,100.3,100.3,100.3,100.3,100.4,100.4,100.4,100.4,100.4,100.3,100.5,101.1,101.1,101,101,101,101,101,101,101,101,101.3,101.4,102.4]
+var kyouyoougoraku = [101.8,102.1,101.1,100.6,99.5,98.3,98,97.5,98.1,100.8,100.5,100.9,101.5,101.9,101.1,102.4,103.2,101.6,102.1,101.7,101.9,101.4,101.8,102.2,103.1,103.6,102.3,103.2,104.9,103.8,103,101.6,101.9,103,103.4,104.5,106.3]
+function food_draw() {
+    alert("food")
+}
+function draw(target) {
+    //canvas要素を取得
+    var canvas = document.getElementById('tutorial');
+    if (canvas.getContext) {
+        //変数ctxにペンの機能を持たせる
+        var ctx = canvas.getContext('2d');
+        //重ならないように全部消す
+        ctx.clearRect(0,0,350,350);
+        //ここからパスを始める
+        var a = -320 / 40;
+        var b = 330 - a * 90;
+        var x = 20 + 320 / 9;
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "hsl(0,0%,0%,100%)";
+        ctx.beginPath();
+        ctx.moveTo(20,10);
+        ctx.lineTo(20,330);
+        ctx.lineTo(340,330);
+        ctx.stroke();
+        ctx.strokeStyle = "hsl(0,0%,75%,100%)";
+        ctx.beginPath();
+        var z = 95
+        for (let i = 0; i < 7; i++){
+            ctx.moveTo(20,a * z + b);
+            ctx.lineTo(340,a * z + b);
+            z += 5;
+        }
+        for (let i = 0; i < 9; i++) {
+            ctx.moveTo(x,10);
+            ctx.lineTo(x,330);
+            x += 320 / 9;
+        }
+        
+        var z = 90
+        //strokeで線を引く(fillは塗りつぶし)
+        ctx.stroke();
+        ctx.font = '9px sans-serif';
+        for (let i = 0; i < 9; i++) {
+            ctx.fillText(z, 0,a * z + b);
+            z += 5;
+        }
+        
+        var x = 0;
+        var y = 0;
+        var year = 2020;
+        for (let i = 0; i < 4; i++) {
+            ctx.fillText(year + '/4', x, 343);
+            year += 1;
+            x += 320 / 3;
+        }
+        x = 15 + 320 / 9
+        for (let i = 0; i < 3; i++) {
+            ctx.fillText('8', x, 343);
+            x += 320 / 3;
+        }
+        x = 15 + 320 / 9 * 2
+        for (let i = 0; i < 3; i++) {
+            ctx.fillText('12', x, 343);
+            x += 320 / 3;
+        }
+
+        //右上に今選択しているものを表示する
+        ctx.font = '17px sans-serif';
+        ctx.fillText(target,30,20);
+        ctx.fillText('(2020年=100)',230,20);
+        if (target == '総合') {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,100%)";
+        } else {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,25%)";
+        }
+        ctx.beginPath();
+        ctx.moveTo(20,a * sougou[0] + b);
+        for (let i = 1; i < 37; i++) {
+            ctx.lineTo(20 + i * 320 / 36, a * sougou[i] + b);
+        }
+        ctx.stroke();
+        y += 36;
+
+        if (target == '食料') {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,100%)";
+        } else {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,25%)";
+        }
+        ctx.beginPath();
+        ctx.moveTo(20,a * food[0] + b);
+        for (let i = 1; i < 37; i++) {
+            ctx.lineTo(20 + i * 320 / 36, a * food[i] + b);
+        }
+        ctx.stroke();
+        y += 36;
+
+        if (target == '住居') {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,100%)";
+        } else {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,25%)";
+        }
+        ctx.beginPath();
+        ctx.moveTo(20,a * home[0] + b);
+        for (let i = 1; i < 37; i++) {
+            ctx.lineTo(20 + i * 320 / 36, a * home[i] + b);
+        }
+        ctx.stroke();
+        y += 36;
+
+        if (target == '水道、光熱') {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,100%)";
+        } else {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,25%)";
+        }
+        ctx.beginPath();
+        ctx.moveTo(20,a * suidoukounetu[0] + b);
+        for (let i = 1; i < 37; i++) {
+            ctx.lineTo(20 + i * 320 / 36, a * suidoukounetu[i] + b);
+        }
+        ctx.stroke();
+        y += 36;
+
+        if (target  == '家具、家事用品') {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,100%)";
+        } else {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,25%)";
+        }
+        ctx.beginPath();
+        ctx.moveTo(20,a * kagukazi[0] + b);
+        for (let i = 1; i < 37; i++) {
+            ctx.lineTo(20 + i * 320 / 36, a * kagukazi[i] + b);
+        }
+        ctx.stroke();
+        y += 36;
+
+        if (target  == '被服、履物') {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,100%)";
+        } else {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,25%)";
+        }
+        ctx.beginPath();
+        ctx.moveTo(20,a * hihukuhakimono[0] + b);
+        for (let i = 1; i < 37; i++) {
+            ctx.lineTo(20 + i * 320 / 36, a * hihukuhakimono[i] + b);
+        }
+        ctx.stroke();
+        y += 36;
+
+        if (target  == '保健医療') {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,100%)";
+        } else {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,25%)";
+        }
+        ctx.beginPath();
+        ctx.moveTo(20,a * iryou[0] + b);
+        for (let i = 1; i < 37; i++) {
+            ctx.lineTo(20 + i * 320 / 36, a * iryou[i] + b);
+        }
+        ctx.stroke();
+        y += 36;
+
+        if (target  == '交通、通信') {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,100%)";
+        } else {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,25%)";
+        }
+        ctx.beginPath();
+        ctx.moveTo(20,a * koutuutuusin[0] + b);
+        for (let i = 1; i < 37; i++) {
+            ctx.lineTo(20 + i * 320 / 36, a * koutuutuusin[i] + b);
+        }
+        ctx.stroke();
+        y += 36;
+
+        if (target  == '教育') {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,100%)";
+        } else {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,25%)";
+        }
+        ctx.beginPath();
+        ctx.moveTo(20,a * education[0] + b);
+        for (let i = 1; i < 37; i++) {
+            ctx.lineTo(20 + i * 320 / 36, a * education[i] + b);
+        }
+        ctx.stroke();
+        y += 36;
+
+        if (target  == '教養娯楽') {
+            ctx.lineWidth = 3;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,100%)";
+        } else {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle  = "hsl(" + y + ",90%,61%,25%)";
+        }
+        ctx.beginPath();
+        ctx.moveTo(20,a * kyouyoougoraku[0] + b);
+        for (let i = 1; i < 37; i++) {
+            ctx.lineTo(20 + i * 320 / 36, a * kyouyoougoraku[i] + b);
+        }
+        ctx.stroke();
+
+    }
+}
+</script>
+<style>
+.text {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.text::before {
+    content: "";
+    border-top: 3px solid;
+    margin: 0 1em;
+    width: 20px;
+}
+#sougou::before {
+    border-color: hsl(0,90%,61%,100%);;
+}
+#food::before {
+    border-color: hsl(36,90%,61%,100%);
+}
+#home::before {
+    border-color: hsl(72,90%,61%,100%);
+}
+#suidoukounetu::before {
+    border-color: hsl(108,90%,61%,100%);
+}
+#kagukazi::before {
+    border-color: hsl(144,90%,61%,100%);
+}
+#hihukuhakimono::before {
+    border-color: hsl(180,90%,61%,100%);
+}
+#iryou::before {
+    border-color: hsl(216,90%,61%,100%);
+}
+#koutuutuusin::before {
+    border-color: hsl(252,90%,61%,100%);
+}
+#education::before {
+    border-color: hsl(288,90%,61%,100%);
+}
+#kyouyougoraku::before {
+    border-color: hsl(324,90%,61%,100%);
+}
+td {
+    width: 175px;
+}
+
+/*canvasの境界線を1pxの黒の実線で描く*/
+canvas {
+    border: 1px solid black;
+    display: block;
+    margin: auto; 
+}
+table {
+    margin: auto;
+}
+p {
+    text-align: center;
+}
+h1 {
+    text-align: center;
+    font-size: 25px;
+}
+</style>
+</head>
+<!-- bodyがロードされたらdraw関数を実行する -->
+<body onload="draw('総合');">
+<h1>消費者物価指数の推移(分類別)</h1>
+<p>2020年4月～2023年4月まで</p>
+<canvas id="tutorial" width="350" height="350"></canvas>
+<br>
+<table>
+    <tr>
+        <td onclick="draw('総合')"><div class="text" id="sougou">総合</div></td>
+        <td onclick="draw('食料')"><div class="text" id ="food">食料</div></td>
+    </tr>
+    <tr>
+        <td onclick="draw('住居')"><div class="text" id="home">住居</div></td>
+        <td onclick="draw('水道、光熱')"><div class="text" id="suidoukounetu">水道、光熱</div></td>
+    </tr>
+    <tr>
+        <td onclick="draw('家具、家事用品')"><div class="text" id="kagukazi">家具、家事用品</div></td>
+        <td onclick="draw('被服、履物')"><div class="text" id="hihukuhakimono">被服、履物</div></td>
+    </tr>
+    <tr>
+        <td onclick="draw('保健医療')"><div class="text" id="iryou">保健医療</div></td>
+        <td onclick="draw('交通、通信')"><div class="text" id="koutuutuusin">交通、通信</div></td>
+    </tr>
+    <tr>
+        <td onclick="draw('教育')"><div class="text" id="education">教育</div></td>
+        <td onclick="draw('教養娯楽')"><div class="text" id="kyouyougoraku">教養娯楽</div></td>
+    </tr>
+</table>
+<p>データ出典:「消費者物価指数」（総務省統計局）</p>
+</body>
+</html>
