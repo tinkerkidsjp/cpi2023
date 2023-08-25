@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>消費者物価指数</title>
+<title>消費者物価指数の推移（分類別）</title>
 <script>
 var sougou = [100.2,100.1,99.9,100,100.1,99.9,99.8,99.5,99.3,99.8,99.8,99.9,99.1,99.4,99.5,99.7,99.7,100.1,99.9,100.1,100.1,100.3,100.7,101.1,101.5,101.8,101.8,102.3,102.7,103.1,103.7,103.9,104.1,104.7,104,104.4,105.1]
 //var tanokounetuhi = [98.9,93.2,92.4,93.3,97.8,97.4,96.5,95.3,95.6,97.6,100.9,106.8,111,111.2,112.7,116.8,117.4,117.2,121.5,129.9,130,130.2,134.7,139.5,139.9,139.1,139.1,139.6,138.5,138.7,137.7,137,136.1,135.8,135.3,135.2,135.6,135.6]
@@ -281,6 +281,9 @@ function draw(target) {
 td {
     width: 175px;
     height: 30px;
+    border: 1px solid black;
+    border-radius: 30px;
+    background-color: #fdfdfd;
 }
 
 /*canvasの境界線を1pxの黒の実線で描く*/
@@ -290,6 +293,7 @@ canvas {
 }
 table {
     margin: auto;
+    
 }
 p {
     text-align: center;
@@ -308,7 +312,7 @@ body {
 <body onload="draw('総合');">
 <h1>消費者物価指数の推移(分類別)</h1>
 <p>2020年4月～2023年4月まで</p>
-<canvas id="tutorial" width="350" height="350"></canvas>
+<canvas id="tutorial" width="360" height="350"></canvas>
 <br>
 <p>各分類をクリックすると太線になります</p>
 <table>
